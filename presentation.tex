@@ -106,7 +106,7 @@
 
 
 \begin{frame}
-    \frametitle{Vertex embeddings (random walks)}
+    \frametitle{Vertex embeddings}
     Рассмотрим embedding, которые описывают локальные свойства
     \skipline
     \skipline
@@ -125,44 +125,52 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{DeepWalk (Алгоритм)}
-    Embedding: $\varPhi: V \to \R^d$ 
+    \frametitle{DeepWalk (Постановка)}
+
+    \begin{block}{Обозначения}
+        Embedding: $\varPhi: V \to \R^d$ 
+        \skipline
+        \skipline
+        Loss: $\sum_{\text{$u$ и $v$ <<близко>>}} -\ln \Prob\left(u \ \vert\ \varPhi(v)\right)$
+    \end{block}
     \skipline
-    \skipline
-    Loss: $\sum_{\text{$u$ и $v$ <<близко>>}} -\ln \Prob\left(u \ \vert\ \varPhi(v)\right)$
-    \skipline
-    \skipline
-    \skipline
-    \skipline
-    Алгоритм
-    \begin{enumerate}
-        \item Переберем вершину $s \in V$
-        \item Рассмотрим случайный путь $\mathcal{W}_s$ размера $t$
-        \item Прорелаксируем SkipGram пройдясь по $\mathcal{W}_s$ окном $w$
-        \item Повторим процес $\gamma$ раз
-    \end{enumerate}
+    \begin{block}{Алгоритм}
+        \begin{enumerate}
+            \item Переберем вершину $s \in V$
+            \item Рассмотрим случайный путь $\mathcal{W}_s$ размера $t$
+            \item Прорелаксируем SkipGram пройдясь по $\mathcal{W}_s$ окном $w$
+            \item Повторим процес $\gamma$ раз
+        \end{enumerate}
+    \end{block}
 \end{frame}
 
 \begin{frame}
-    \frametitle{Hierarchical Softmax}
+    \frametitle{DeepWalk (Hierarchical Softmax)}
     Проблема: SkipGram --- делать Softmax долго
     \skipline
     \skipline
     Решение: воспользуемся деревом отрезков
     \skipline
+    % \skipline
     $ $\hspace*{4ex} 
     $
     \Prob\left(u \ \vert\ \varPhi(v)\right) = 
     \prod_{b_i \in B} \Prob\left(b_i \ \vert\ \varPhi(v)\right)
     $ 
-\end{frame}
-
-\begin{frame}
-    \frametitle{DeepWalk}
+    \skipline
+    \skipline
     Итоговый алгоритм:
     \begin{figure}
         \includegraphics[width=1\columnwidth]{DeepWalk.png}
     \end{figure}
 \end{frame}
+
+\begin{frame}
+\frametitle{Список литературы}
+\begin{itemize}
+    \item DeepWalk: \url{https://arxiv.org/pdf/1403.6652.pdf}
+\end{itemize}
+\end{frame}
+
 
 \end{document}
