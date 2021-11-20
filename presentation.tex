@@ -122,7 +122,7 @@
     \skipline
     \skipline
     \skipline
-    Идея: попытаемся применить word2vec для этой задачи
+    Идея: попытаемся применить SkipGram для этой задачи
 \end{frame}
 
 \begin{frame}
@@ -178,11 +178,9 @@
 \begin{frame}
     \frametitle{Node2Vec (search strategy)}
     \begin{block}{Обновление}
-        Embedding: $f: V \to \R^d$ 
-        \skipline
-        \skipline
-        Loss: $\sum_{u \in N_S  (v)} -\ln Pr\left(u \ \vert\ f(v)\right)$
+        Loss: $\sum_{u \in N_S  (v)} -\ln Pr\left(u \ \vert\ \varPhi(v)\right)$
     \end{block}
+    \skipline
     \begin{multicols}{2}
         \includegraphics[width=1\columnwidth]{bfs_dfs.png}\par 
         \includegraphics[width=1\columnwidth]{step.png}\par 
@@ -197,6 +195,60 @@
     \end{figure}
 \end{frame}
 
+\begin{frame}
+    \frametitle{Какие задачи мы можем решить?}
+    Возможные формулы оценки:
+    \begin{figure}
+        \includegraphics[width=0.75\columnwidth]{operators.png}
+    \end{figure}
+    \skipline
+    Примеры задач:
+    \begin{itemize}
+        \item node-classification
+        \item node-clastering
+        \item graph-visualization
+        \item link-prediction 
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Усложнение link-prediction}
+    Постановка:
+    \begin{itemize}
+        \item Есть граф $\left(V, E\right)$
+        \item Каждое ребро принадлежит одному из классов $(R)$
+        \item Хотим найти $\phi(v_1, r, v_2)$, которая будет предсказывать, есть ли ребро $(v_1, v_2)$ класса $r$
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{TuckER (decomposition)}
+    \begin{figure}
+        \includegraphics[width=0.6\columnwidth]{Tucker-decomposition.png}
+    \end{figure}
+    $$
+    X_{ijk} = \sum_{\alpha=1}^{K_1} \sum_{\beta=1}^{K_2} \sum_{\gamma=1}^{K_3} 
+    Z_{\alpha\beta\gamma} U^{(1)}_{i \alpha} U^{(2)}_{j \beta} U^{(3)}_{k \gamma} 
+    $$
+\end{frame}
+
+\begin{frame}
+    \frametitle{TuckER (model)}
+    % \begin{figure}
+    %     \includegraphics[width=1\columnwidth]{Tucker-decomposition.png}
+    % \end{figure}
+    % $$
+    % X_{ijk} = \sum_{\alpha=1}^{K_1} \sum_{\beta=1}^{K_2} \sum_{\gamma=1}^{K_3} 
+    % Z_{\alpha\beta\gamma} U^{(1)}_{i \alpha} U^{(2)}_{j \beta} U^{(3)}_{k \gamma} 
+    % $$
+\end{frame}
+
+\begin{frame}
+    \frametitle{TuckER (model)}
+    \begin{figure}
+        \includegraphics[width=0.7\columnwidth]{Diagram.png}
+    \end{figure}
+\end{frame}
 
 \begin{frame}
 \frametitle{Список литературы}
@@ -204,6 +256,7 @@
     \item DeepWalk: \url{https://arxiv.org/pdf/1403.6652.pdf}
     \item Node2Vec: \url{https://arxiv.org/pdf/1607.00653.pdf}
     \item SDNE: \url{https://www.kdd.org/kdd2016/papers/files/rfp0191-wangAemb.pdf}
+    \item TuckER: \url{https://arxiv.org/pdf/1901.09590.pdf}
 \end{itemize}
 \end{frame}
 
