@@ -13,6 +13,7 @@
 \usepackage[linesnumbered,lined,boxed,commentsnumbered]{algorithm2e}
 
 %%% Работа с русским языком и шрифтами
+\usepackage{multicol}
 \usepackage[english,russian]{babel}   % загружает пакет многоязыковой вёрстки
 % \usepackage{fontspec}      % подготавливает загрузку шрифтов Open Type, True Type и др.
 % \setmainfont[Ligatures={TeX,Historic}]{Myriad Pro} 
@@ -131,7 +132,7 @@
         Embedding: $\varPhi: V \to \R^d$ 
         \skipline
         \skipline
-        Loss: $\sum_{\text{$u$ и $v$ <<близко>>}} -\ln \Prob\left(u \ \vert\ \varPhi(v)\right)$
+        Loss: $\sum_{u \in N(v)} -\ln Pr\left(u \ \vert\ \varPhi(v)\right)$
     \end{block}
     \skipline
     \begin{block}{Алгоритм}
@@ -144,19 +145,28 @@
     \end{block}
 \end{frame}
 
+
+\begin{frame}
+    \frametitle{DeepWalk (in a nutshell)}
+    \begin{figure}
+        \includegraphics[width=1\columnwidth]{randomwalk.png}
+    \end{figure}
+\end{frame}
+
 \begin{frame}
     \frametitle{DeepWalk (Hierarchical Softmax)}
-    Проблема: SkipGram --- делать Softmax долго
-    \skipline
-    \skipline
-    Решение: воспользуемся деревом отрезков
+    Проблема: делать Softmax долго
     \skipline
     % \skipline
+    Решение: дерево отрезков \text{\color{blue} (или negative sampling)}
+    \skipline
+    \skipline
     $ $\hspace*{4ex} 
     $
-    \Prob\left(u \ \vert\ \varPhi(v)\right) = 
-    \prod_{b_i \in B} \Prob\left(b_i \ \vert\ \varPhi(v)\right)
+    Pr\left(u \ \vert\ \varPhi(v)\right) = 
+    \prod_{b_i \in B} Pr\left(b_i \ \vert\ \varPhi(v)\right)
     $ 
+    \skipline
     \skipline
     \skipline
     Итоговый алгоритм:
@@ -166,9 +176,24 @@
 \end{frame}
 
 \begin{frame}
+    \frametitle{Node2Vec (search strategy)}
+    \begin{block}{Обновление}
+        Embedding: $f: V \to \R^d$ 
+        \skipline
+        \skipline
+        Loss: $\sum_{u \in N_S  (v)} -\ln Pr\left(u \ \vert\ f(v)\right)$
+    \end{block}
+    \begin{multicols}{2}
+        \includegraphics[width=1\columnwidth]{bfs_dfs.png}\par 
+        \includegraphics[width=1\columnwidth]{step.png}\par 
+    \end{multicols}
+\end{frame}
+
+\begin{frame}
 \frametitle{Список литературы}
 \begin{itemize}
     \item DeepWalk: \url{https://arxiv.org/pdf/1403.6652.pdf}
+    \item Node2Vec: \url{https://arxiv.org/pdf/1607.00653.pdf}
 \end{itemize}
 \end{frame}
 
