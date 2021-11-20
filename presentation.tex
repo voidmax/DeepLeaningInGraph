@@ -89,25 +89,25 @@
 
 \frame{\titlepage}
 
+% \begin{frame}
+%     \frametitle{Какие задачи на графы нам интересны?}
+%     Задачи на вершины
+
+%     \begin{itemize}
+%         \item link-prediction
+%         \item node-classification
+%     \end{itemize}
+%     \skipline
+%     Задачи на графы
+
+%     \begin{itemize}
+%         \item graph-classification
+%     \end{itemize}
+% \end{frame}
+
+
 \begin{frame}
-    \frametitle{Какие задачи на графы нам интересны?}
-    Задачи на вершины
-
-    \begin{itemize}
-        \item link-prediction
-        \item node-classification
-    \end{itemize}
-    \skipline
-    Задачи на графы
-
-    \begin{itemize}
-        \item graph-classification
-    \end{itemize}
-\end{frame}
-
-
-\begin{frame}
-    \frametitle{Vertex embeddings}
+    \frametitle{Vertex embeddings (first order proximity)}
     Рассмотрим embedding, которые описывают локальные свойства
     \skipline
     \skipline
@@ -116,7 +116,7 @@
     \skipline
     \skipline
     \skipline
-    \pause
+    % \pause
     Формулировка напоминает аналогичную задачу для текста
     \skipline
     \skipline
@@ -190,10 +190,20 @@
 \end{frame}
 
 \begin{frame}
+    \frametitle{Structural Deep Network Embedding (SDNE)}
+    Хотим в embedding также <<хранить>> знания о структуре\\ (second order proximity)
+    \begin{figure}
+        \includegraphics[width=0.75\columnwidth]{SDNE.png}
+    \end{figure}
+\end{frame}
+
+
+\begin{frame}
 \frametitle{Список литературы}
 \begin{itemize}
     \item DeepWalk: \url{https://arxiv.org/pdf/1403.6652.pdf}
     \item Node2Vec: \url{https://arxiv.org/pdf/1607.00653.pdf}
+    \item SDNE: \url{https://www.kdd.org/kdd2016/papers/files/rfp0191-wangAemb.pdf}
 \end{itemize}
 \end{frame}
 
