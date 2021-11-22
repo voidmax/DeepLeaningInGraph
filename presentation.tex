@@ -107,7 +107,14 @@
 
 
 \begin{frame}
-    \frametitle{Vertex embeddings (first order proximity)}
+    \frametitle{Vertex embeddings}
+    \begin{block}{Определение}
+        First-order proximity --- непосредственная близость вершин 
+        \skipline
+        \skipline
+        Second-order proximity --- близость вершин по структуре
+    \end{block}
+    \skipline
     Рассмотрим embedding, которые описывают локальные свойства
     \skipline
     \skipline
@@ -118,8 +125,6 @@
     \skipline
     % \pause
     Формулировка напоминает аналогичную задачу для текста
-    \skipline
-    \skipline
     \skipline
     \skipline
     Идея: попытаемся применить SkipGram для этой задачи
@@ -188,8 +193,25 @@
 \end{frame}
 
 \begin{frame}
+    \frametitle{Node2Vec (proximity)}
+    Примеры кластеризации с разными параметрами $q$
+    \begin{multicols}{2}
+        \begin{figure}
+            \includegraphics[width=1\columnwidth]{q_0_5.png}
+            \caption{$p = 1, q = 0.5$}
+        \end{figure}
+        \par 
+        \begin{figure}
+            \includegraphics[width=1\columnwidth]{q_2.png}
+            \caption{$p = 1, q = 2$}
+        \end{figure}
+        \par
+    \end{multicols}
+\end{frame}
+
+\begin{frame}
     \frametitle{Structural Deep Network Embedding (SDNE)}
-    Хотим в embedding также <<хранить>> знания о структуре\\ (second order proximity)
+    Хотим в embedding также <<хранить>> знания о структуре\\ (second-order proximity)
     \begin{figure}
         \includegraphics[width=0.75\columnwidth]{SDNE.png}
     \end{figure}
@@ -219,6 +241,8 @@
         \item Каждое ребро принадлежит одному из классов $(R)$
         \item Хотим найти $\phi(v_1, r, v_2)$, которая будет предсказывать, есть ли ребро $(v_1, v_2)$ класса $r$
     \end{itemize}
+    \skipline
+    Мы хотим предсказать трехмерный бинарный тензор $\R^{|V| \times |E| \times |V|}$
 \end{frame}
 
 \begin{frame}
@@ -234,13 +258,13 @@
 
 \begin{frame}
     \frametitle{TuckER (model)}
-    % \begin{figure}
-    %     \includegraphics[width=1\columnwidth]{Tucker-decomposition.png}
-    % \end{figure}
-    % $$
-    % X_{ijk} = \sum_{\alpha=1}^{K_1} \sum_{\beta=1}^{K_2} \sum_{\gamma=1}^{K_3} 
-    % Z_{\alpha\beta\gamma} U^{(1)}_{i \alpha} U^{(2)}_{j \beta} U^{(3)}_{k \gamma} 
-    % $$
+    Попытаемся воспользоваться полученными embeddings для вершин
+    \skipline
+    \skipline
+    Первая идея: обучить модель для каждого класса
+    \skipline
+    \skipline
+    Вторая идея: обучим для классов свои embeddings, параллельно обучая ядро свертки
 \end{frame}
 
 \begin{frame}
