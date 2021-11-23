@@ -115,19 +115,17 @@
         Second-order proximity --- близость вершин по структуре
     \end{block}
     \skipline
-    Рассмотрим embedding, которые описывают локальные свойства
+    \begin{itemize}
+        \item Рассмотрим embedding, которые описывают локальные свойства
+        \item Мы хотим, чтобы соседи имели близкий вектор, а далекие разный
+    \end{itemize}
     \skipline
     \skipline
-    Мы хотим, чтобы соседи имели близкий вектор, а далекие разный
     \skipline
-    \skipline
-    \skipline
-    \skipline
-    % \pause
-    Формулировка напоминает аналогичную задачу для текста
-    \skipline
-    \skipline
-    Идея: попытаемся применить SkipGram для этой задачи
+    \begin{itemize}
+        \item Формулировка напоминает аналогичную задачу для текста
+        \item Идея: попытаемся применить SkipGram для этой задачи
+    \end{itemize}
 \end{frame}
 
 \begin{frame}
@@ -258,13 +256,15 @@
 
 \begin{frame}
     \frametitle{TuckER (model)}
-    Попытаемся воспользоваться полученными embeddings для вершин
-    \skipline
-    \skipline
-    Первая идея: обучить модель для каждого класса
-    \skipline
-    \skipline
-    Вторая идея: обучим для классов свои embeddings, параллельно обучая ядро свертки
+    \begin{itemize}
+        \item Попытаемся воспользоваться полученными embeddings для вершин
+        \skipline
+        \skipline
+        \item Первая идея: обучить модель для каждого класса
+        \skipline
+        \skipline
+        \item Вторая идея: обучим для классов свои embeddings, параллельно обучая ядро свертки
+    \end{itemize}
 \end{frame}
 
 \begin{frame}
